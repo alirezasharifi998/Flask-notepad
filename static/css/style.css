@@ -1,0 +1,73 @@
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+a::selection {
+    background: none;
+}
+
+textarea::selection {
+    background-color: yellow;
+}
+
+#input-textarea {
+    min-height: 60%;
+    height: 80%;
+    max-height: 90%;
+}
+
+.main-input-container {
+    height: 40vh;
+}
+
+#subject-menu {
+    height: 95vh;
+}
+
+#subject-menulist {
+    height: 90%;
+    overflow-y: scroll;
+}
+
+#note-panel {
+    height: 50vh;
+}
+
+/* #note-menu {
+    height: 50vh;
+}
+
+#note-menulist {
+    height: 95%;
+    overflow-y: scroll;
+} */
+
+#sub-input-box {
+    z-index: 50;
+    border-radius: 20px;
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    padding: 40px;
+    left: 10px;
+    top: 10px;
+
+}
+
+#fold-input-box {
+    z-index: 50;
+    border-radius: 20px;
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    padding: 40px;
+    left: 483px;
+    top: 284px;
+
+}
+
+#note-container {
+    height: 43vh;
+    overflow-y: scroll;
+}

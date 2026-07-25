@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+
+{%block input%}
+<section class="columns main-input-container">
+    <section class="column is-2">
+        <div class="buttons">
+            <button class="button  is-primary is-fullwidth" onclick="add_note()">ADD</button>
+            <button class="button  is-is-danger is-fullwidth">PASTE</button>
+        </div>
+    </section>
+    <section class="column is-10">
+        <form action="{{url_for('add_note' , sub_id=selected , folder_id = folder_id)}}" method="post" id="input-form">
+            <input type="text" id="input-title" placeholder="title" name="title" class="input mb-1">
+            <textarea name="text" id="input-textarea" class="textarea"></textarea>
+        </form>
+    </section>
+</section>
+{%endblock input%}

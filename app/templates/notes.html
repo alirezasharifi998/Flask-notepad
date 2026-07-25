@@ -1,0 +1,48 @@
+{% extends "input.html" %}
+
+{%block notes%}
+<nav class="panel is-link" id="note-panel">
+    <div class="panel-heading p-2 pl-3">
+        <span>NOTES:</span>
+        <button class="button is-small is-rounded is-primary is-light" onclick="add_folder()">Add Folder</button>
+        <button class="button is-small is-rounded is-danger is-light" onclick="del_node()">Del</button>
+    </div>
+    <div id="note-container">
+        {% if is_sub%}
+        <a class="panel-block" ondblclick="back_page(this)" data-lastpage={%if parent
+            !=0%} "{{url_for('show_folder' , sub_id = selected , folder_id = parent)}}" {% else
+            %} "{{url_for('show_sub' , sub_id = selected)}}" {%endif%}>
+            <span class="panel-icon">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </span>
+            Back
+            </butt>
+            {% endif %}
+            {% if folders %}
+            {% for folder in folders %}
+
+            <a class="panel-block" onclick="select_node(this)" ondblclick="show_node(this)"
+                data-show="{{url_for('show_folder' , sub_id = selected , folder_id = folder.id)}}"
+                data-del="{{url_for('del_folder' , sub_id = selected , folder_id = folder_id, fold_del = folder.id)}}">
+                <span class="panel-icon">
+                    <i class="fa fa-folder" aria-hidden="true"></i>
+                </span>
+                {{folder.name}}
+            </a>
+            {% endfor %}
+            {% endif %}
+            {% if notes %}
+            {% for note in notes %}
+            <a class="panel-block" onclick="select_node(this)" ondblclick="show_node(this)"
+                data-show="{{url_for('show_note' , sub_id = selected , folder_id = folder_id , note_id = note.id)}}"
+                data-del="{{url_for('del_note' , sub_id= selected , folder_id=folder_id , note_id = note.id)}}">
+                <span class="panel-icon">
+                    <i class="fa{%if note.type%} fa-file-text{%else%} fa-image{%endif%}" aria-hidden="true"></i>
+                </span>
+                {{note.title}}
+            </a>
+            {% endfor %}
+            {% endif %}
+    </div>
+</nav>
+{%endblock notes%}

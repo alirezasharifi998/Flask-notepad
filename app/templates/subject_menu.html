@@ -1,0 +1,25 @@
+{%extends "page.html"%}
+
+{%block subject_menu%}
+<section class="column is-2 card">
+    <aside class="menu" id="subject-menu">
+        <p class="menu-label is-flex is-flex-direction-column">
+            <span class="mr-3">SUBJECTS:</span><span class="buttons ">
+                <button class="button is-small is-primary is-light" onclick="add_subject()">ADD</button>
+                <button class="button is-small is-light">EDIT</button>
+                <button class="button is-small is-danger is-light" onclick="del_subject()">DEL</button>
+            </span>
+        </p>
+        <ul class="menu-list" id="subject-menulist">
+            {% if subs %}
+            {% for sub in subs %}
+            <li class="mr-1"><a data-href="{{url_for('show_sub' , sub_id=sub.id)}}"
+                    data-del="{{url_for('del_sub' , sub_id = sub.id)}}" {% if selected and sub.id==selected %}
+                    id="selected-sub" class="is-active" {% endif %} onclick="select_sub(this)">{{sub.name}}</a></li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </aside>
+</section>
+
+{%endblock subject_menu%}

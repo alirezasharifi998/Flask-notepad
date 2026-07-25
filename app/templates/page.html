@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename='./css/bulma.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename='./css/fontawesome-free-6.4.2-web/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename = './css/style.css')}}">
+    <title>NOTE-PAD</title>
+</head>
+
+<body>
+    <section class="container is-fluid mt-4">
+        <!-- subject input -->
+        <section id="sub-input-box" style="display: none;" class="notification">
+            <button class="delete is-large" onclick="this.parentElement.style.display = 'none';"></button>
+            <form action="{{url_for('save_sub')}}" method="post">
+                <div class="feild mb-2">
+                    <label class="label">Enter sub name:</label>
+                    <div class="control">
+                        <input class="input" type="text" name="sub-name">
+                    </div>
+                </div>
+                <div class="feild">
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Enter</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- folder input -->
+        <section id="fold-input-box" style="display: none;" class="notification">
+            <button class="delete is-large" onclick="this.parentElement.style.display = 'none';"></button>
+            <form action="{{url_for('add_folder' , sub_id = selected , folder_id = folder_id)}}" method="post">
+                <div class="feild mb-2">
+                    <label class="label">Enter folder name:</label>
+                    <div class="control">
+                        <input class="input" type="text" name="fold-name">
+                    </div>
+                </div>
+                <div class="feild">
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Enter</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- show-note -->
+        <!-- i want to impeliment this part as easy as i can -->
+        {%block show_note%}
+        {%endblock show_note%}
+        <!-- end of show-note -->
+        <section class="columns">
+
+
+            <!-- subjects -->
+            {%block subject_menu%}
+            {%endblock subject_menu%}
+            <!-- here we are going to have a menu to the subjects i have create and i have saveed them -->
+            <!-- end of subjects -->
+            <!-- main -->
+
+            {% block main %}
+            <!-- input part -->
+
+            <!-- for now i put a text area only if i want to input somthing in the program but mostly the input is done with ctrl+v -->
+            <!-- end of input -->
+
+            <!-- notes -->
+            <!-- showing the notes i thing cards are better but for now managing them is a bit hardwork -->
+            <!-- by showing i mean only show ing the title and some peice of the note -->
+            <!-- somtimes we want to get a text and a photo to gather so we should think for a way to handle this hopefully in tommarow -->
+            <!-- end of notes -->
+            <!-- end of main -->
+            {% endblock main %}
+        </section>
+    </section>
+</body>
+
+<script src="{{url_for('static' , filename='./javascripts/jsfile.js')}}">
+</script>
+
+</html>
