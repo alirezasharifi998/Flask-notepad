@@ -174,4 +174,6 @@ dist/
 build/
 .flaskenv
 *.db
+run_app.py
+
 *.swp
